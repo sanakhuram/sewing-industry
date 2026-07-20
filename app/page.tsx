@@ -69,8 +69,8 @@ export default function HomePage() {
     <main className="industrial-background min-h-screen">
       {/* Hero */}
 
-      <section className="hero-background relative min-h-[760px]">
-        <div className="relative z-10 mx-auto grid min-h-[760px] max-w-7xl items-center gap-14 px-6 py-24 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
+      <section className="hero-background relative min-h-190">
+        <div className="relative z-10 mx-auto grid min-h-190 max-w-7xl items-center gap-14 px-6 py-24 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
           <div className="max-w-3xl">
             <p className="mb-5 inline-flex items-center gap-2 border border-[#cab557]/40 bg-[#112752]/75 px-4 py-2 text-sm font-semibold tracking-[0.2em] text-[#f5e495] uppercase">
               <Gauge size={17} />
@@ -122,7 +122,7 @@ export default function HomePage() {
                 <Factory className="text-[#f5e495]" size={34} />
               </div>
 
-              <div className="grid min-h-[390px] place-items-center border border-[#42598b]/40 bg-[linear-gradient(145deg,#1b3565,#051535)] p-10 text-center">
+              <div className="grid min-h-97.5 place-items-center border border-[#42598b]/40 bg-[linear-gradient(145deg,#1b3565,#051535)] p-10 text-center">
                 <div>
                   <div className="mx-auto flex h-32 w-32 items-center justify-center border-2 border-[#cab557] bg-[#112752] [clip-path:polygon(50%_0%,100%_100%,0%_100%)]">
                     <span className="mt-9 text-3xl font-black tracking-tight text-white">
