@@ -1,4 +1,5 @@
 import Link from "next/link";
+import IntroSplash from "@/components/IntroSplash";
 import {
   ArrowRight,
   Cog,
@@ -25,7 +26,7 @@ const services = [
   {
     title: "Tools and Dies",
     description:
-      "Custom tools, fixtures and dies designed for reliable and repeatable production.",
+      "Tools, fixtures and dies developed for reliable and repeatable production.",
     icon: Hammer,
   },
   {
@@ -42,7 +43,7 @@ const capabilities = [
   "Milling operations",
   "Power press production",
   "Wire-forming components",
-  "Custom industrial parts",
+  "Industrial component production",
 ];
 
 const statistics = [
@@ -67,6 +68,8 @@ const statistics = [
 export default function HomePage() {
   return (
     <main className="industrial-background min-h-screen">
+      <IntroSplash />
+
       {/* Hero */}
 
       <section className="hero-background relative min-h-190">
@@ -103,12 +106,12 @@ export default function HomePage() {
                 href="/contact"
                 className="inline-flex items-center justify-center border border-[#cab557]/65 px-7 py-4 font-bold text-white transition hover:bg-[#cab557] hover:text-[#051535]"
               >
-                Request an enquiry
+                Contact our team
               </Link>
             </div>
           </div>
 
-          {/* Hero visual placeholder */}
+          {/* Hero visual */}
 
           <div className="relative hidden lg:block">
             <div className="absolute -inset-6 rounded-[48px] border border-[#42598b]/30" />
@@ -135,8 +138,8 @@ export default function HomePage() {
                   </h2>
 
                   <p className="mx-auto mt-4 max-w-sm leading-7 text-slate-300">
-                    Replace this panel later with an AI-generated clean factory
-                    or machinery image.
+                    Manufacturing sewing-machine spare parts with dependable
+                    workmanship, practical machinery and careful inspection.
                   </p>
                 </div>
               </div>
@@ -161,10 +164,9 @@ export default function HomePage() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl leading-8 text-purple-100">
-            Our workshop produces dependable machinery components, sewing
-            machine parts, industrial tools and made-to-order engineering
-            products for businesses that require strength, accuracy and
-            consistency.
+            Our workshop produces dependable sewing-machine components,
+            industrial tools and precision-manufactured parts for businesses
+            that require strength, accuracy and consistency.
           </p>
         </div>
       </section>
@@ -265,8 +267,8 @@ export default function HomePage() {
 
             <p className="mt-6 max-w-2xl leading-8 text-slate-300">
               MA Engineering Okara combines established machining methods with
-              careful inspection to manufacture parts for sewing machines,
-              industrial equipment and custom mechanical applications.
+              careful inspection to manufacture components for industrial
+              sewing machines and related mechanical equipment.
             </p>
 
             <Link
@@ -300,21 +302,30 @@ export default function HomePage() {
       <section className="px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-6xl overflow-hidden rounded-tl-[65px] rounded-br-[65px] border border-[#cab557]/35 bg-[linear-gradient(110deg,#7a670f,#a6862f,#54468b)] px-7 py-14 text-center shadow-2xl sm:px-12">
           <h2 className="text-3xl font-black text-white sm:text-5xl">
-            Need a custom industrial component?
+            Explore our sewing-machine spare parts.
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl leading-8 text-white/85">
-            Send us your product requirement, drawing or sample. Our team can
-            review the manufacturing possibilities and discuss the next steps.
+            View our manufactured components or contact our team for more
+            information about product availability.
           </p>
 
-          <Link
-            href="/contact"
-            className="mt-9 inline-flex items-center gap-3 bg-[#051535] px-8 py-4 font-bold text-white transition hover:bg-[#112752]"
-          >
-            Contact MA Engineering
-            <ArrowRight size={20} />
-          </Link>
+          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center gap-3 bg-[#051535] px-8 py-4 font-bold text-white transition hover:bg-[#112752]"
+            >
+              View products
+              <ArrowRight size={20} />
+            </Link>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center border border-white/50 px-8 py-4 font-bold text-white transition hover:bg-white hover:text-[#051535]"
+            >
+              Contact our team
+            </Link>
+          </div>
         </div>
       </section>
     </main>

@@ -171,3 +171,206 @@ a {
   border-color: rgba(245, 228, 149, 0.85);
   transform: translateY(-5px);
 }
+
+/* Page load and navigation animation */
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-enter 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Mobile navigation container */
+
+@keyframes mobile-menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mobile-menu-enter {
+  transform-origin: top center;
+  animation: mobile-menu-enter 320ms cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+/* Individual mobile navigation cards */
+
+@keyframes mobile-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-card-enter {
+  opacity: 0;
+  animation: mobile-card-enter 360ms cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+/* Gear movement */
+
+@keyframes gear-enter {
+  from {
+    opacity: 0;
+    transform: rotate(-70deg) scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.gear-enter {
+  animation: gear-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Respect accessibility settings */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .mobile-menu-enter,
+  .mobile-card-enter,
+  .gear-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Staggered page-load animation */
+
+@keyframes page-item-enter {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.page-item-enter {
+  opacity: 0;
+  animation: page-item-enter 700ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    var(--animation-delay, 0ms) forwards;
+}
+
+/* Cards appear individually */
+
+.page-item-enter .industrial-card,
+.page-item-enter article,
+.page-item-enter [data-stagger-item] {
+  opacity: 0;
+  animation: page-card-enter 600ms
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes page-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.page-item-enter .industrial-card:nth-child(1),
+.page-item-enter article:nth-child(1),
+.page-item-enter [data-stagger-item]:nth-child(1) {
+  animation-delay: calc(var(--animation-delay, 0ms) + 180ms);
+}
+
+.page-item-enter .industrial-card:nth-child(2),
+.page-item-enter article:nth-child(2),
+.page-item-enter [data-stagger-item]:nth-child(2) {
+  animation-delay: calc(var(--animation-delay, 0ms) + 280ms);
+}
+
+.page-item-enter .industrial-card:nth-child(3),
+.page-item-enter article:nth-child(3),
+.page-item-enter [data-stagger-item]:nth-child(3) {
+  animation-delay: calc(var(--animation-delay, 0ms) + 380ms);
+}
+
+.page-item-enter .industrial-card:nth-child(4),
+.page-item-enter article:nth-child(4),
+.page-item-enter [data-stagger-item]:nth-child(4) {
+  animation-delay: calc(var(--animation-delay, 0ms) + 480ms);
+}
+
+.page-item-enter .industrial-card:nth-child(5),
+.page-item-enter article:nth-child(5),
+.page-item-enter [data-stagger-item]:nth-child(5) {
+  animation-delay: calc(var(--animation-delay, 0ms) + 580ms);
+}
+
+.page-item-enter .industrial-card:nth-child(6),
+.page-item-enter article:nth-child(6),
+.page-item-enter [data-stagger-item]:nth-child(6) {
+  animation-delay: calc(var(--animation-delay, 0ms) + 680ms);
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-item-enter,
+  .page-item-enter .industrial-card,
+  .page-item-enter article,
+  .page-item-enter [data-stagger-item] {
+    opacity: 1;
+    animation: none;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Intro splash engineering grid */
+
+.intro-grid {
+  background-image:
+    linear-gradient(rgba(202, 181, 87, 0.07) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      rgba(202, 181, 87, 0.07) 1px,
+      transparent 1px
+    );
+  background-size: 52px 52px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-grid {
+    animation: none;
+  }
+}

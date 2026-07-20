@@ -20,6 +20,7 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
   }, [pathname]);
 
@@ -42,8 +43,6 @@ export default function Navbar() {
               priority
               className="h-14 w-14 shrink-0 object-contain sm:h-18 sm:w-18 lg:h-20 lg:w-20"
             />
-
-            {/* Mobile company name */}
 
             <div className="min-w-0 lg:hidden">
               <p className="truncate text-base font-bold tracking-wide text-white sm:text-lg">
@@ -73,18 +72,17 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((current) => !current)}
-            className={`flex h-11 w-11 shrink-0 items-center justify-center border transition lg:hidden ${
+            className={`flex h-11 w-11 shrink-0 items-center justify-center border transition duration-300 lg:hidden ${
               open
-                ? "border-[#f5e495] bg-[#f5e495] text-[#5c4c08]"
-                : "border-[#cab557]/70 bg-transparent text-[#f5e495] hover:bg-[#112752]"
+                ? "rotate-90 border-[#f5e495] bg-[#f5e495] text-[#5c4c08]"
+                : "rotate-0 border-[#cab557]/70 bg-transparent text-[#f5e495] hover:bg-[#112752]"
             }`}
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
-
-          {/* Desktop spacing balance */}
 
           <div className="hidden w-20 lg:block" />
         </div>
@@ -100,7 +98,7 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex min-h-14 flex-1 items-center justify-center border-r border-[#4f4308] px-4 text-center font-medium transition last:border-r-0 ${
+                  className={`flex min-h-14 flex-1 items-center justify-center border-r border-[#4f4308] px-4 text-center font-medium transition duration-300 last:border-r-0 ${
                     active
                       ? "bg-[#f5e495] text-[#5c4c08]"
                       : "bg-[#7a670f] text-[#f6e8ae] hover:bg-[#946f18] hover:text-white"
@@ -114,13 +112,16 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile block navigation */}
+      {/* Mobile navigation */}
 
       {open && (
-        <div className="border-t border-[#42598b]/40 bg-[#07142f] px-4 pt-3 pb-5 lg:hidden">
-          <div className="mx-auto max-w-xl overflow-hidden border border-[#cab557]/45 bg-[#0b2048] shadow-[0_18px_50px_rgba(0,0,0,0.4)]">
+        <div
+          id="mobile-navigation"
+          className="border-t border-[#42598b]/40 bg-[#07142f] px-4 pt-3 pb-5 lg:hidden"
+        >
+          <div className="mobile-menu-enter mx-auto max-w-xl overflow-hidden border border-[#cab557]/45 bg-[#0b2048] shadow-[0_18px_50px_rgba(0,0,0,0.4)]">
             <nav className="grid grid-cols-2">
-              {navigation.map((item) => {
+              {navigation.map((item, index) => {
                 const active = isActive(item.href);
 
                 return (
@@ -128,17 +129,18 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={`group relative flex min-h-24 flex-col justify-between border-r border-b p-4 transition ${
+                    style={{
+                      animationDelay: `${index * 55 + 60}ms`,
+                    }}
+                    className={`mobile-card-enter group relative flex min-h-24 flex-col justify-between border-r border-b p-4 transition duration-300 ${
                       active
                         ? "border-[#d7c178] bg-[#f5e495] text-[#5c4c08]"
                         : "border-[#273f6d] bg-[#112752] text-[#f6e8ae] hover:bg-[#7a670f]"
                     }`}
                   >
-                    {/* Gear icon */}
-
                     <div className="flex items-start justify-between">
                       <div
-                        className={`flex h-10 w-10 items-center justify-center rounded-full border transition ${
+                        className={`gear-enter flex h-10 w-10 items-center justify-center rounded-full border transition duration-300 ${
                           active
                             ? "border-[#5c4c08] bg-white/40"
                             : "border-[#cab557]/70 bg-[#091a3b] group-hover:border-[#f5e495] group-hover:bg-[#946f18]"
@@ -146,11 +148,11 @@ export default function Navbar() {
                       >
                         <Cog
                           size={20}
-                          className={
+                          className={`transition-transform duration-500 group-hover:rotate-90 ${
                             active
                               ? "text-[#5c4c08]"
                               : "text-[#cab557] group-hover:text-white"
-                          }
+                          }`}
                         />
                       </div>
 
@@ -159,15 +161,11 @@ export default function Navbar() {
                       )}
                     </div>
 
-                    {/* Menu title */}
-
                     <div className="mt-5">
                       <span className="text-sm font-semibold sm:text-base">
                         {item.name}
                       </span>
                     </div>
-
-                    {/* Active bottom line */}
 
                     {active && (
                       <span className="absolute bottom-0 left-0 h-1 w-full bg-[#a6862f]" />
@@ -185,8 +183,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-
-      {/* Desktop blue strip */}
 
       <div className="hidden h-8 border-t border-[#42598b]/40 bg-[#112752] lg:block" />
     </header>
